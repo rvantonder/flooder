@@ -31,17 +31,37 @@ class FlooderGUI:
     self.entry.insert(0, "Enter IP or hostname ID")
     self.entry.grid(row=1, column = 1, sticky=W, pady=5)
 
+    self.host1 = Entry(frame, fg="black")
+    self.host1.insert(0, "Hostname 1")
+    self.host1.grid(row = 1, column = 2)
+
+    self.host2 = Entry(frame, fg="black")
+    self.host2.insert(0, "Hostname 2")
+    self.host2.grid(row = 2, column = 2)
+
+    self.host3 = Entry(frame, fg="black")
+    self.host3.insert(0, "Hostname 3")
+    self.host3.grid(row = 3, column = 2)
+
     self.button = Button(frame, text="Flood!", fg="red", command=self.flood)
     self.button.grid(row=2, column=1, sticky=W)
 
     img = PhotoImage(file="narga_h.gif")
     self.narga_map = Label(frame, image=img)
     self.narga_map.image = img
-    self.narga_map.grid(row=0, column = 1)
+    self.narga_map.grid(row=0, column = 1, columnspan=2)
+
+    self.hosts = []
     
   def flood(self):
     ip = self.entry.get()
     flooders = []
+
+    self.hosts.append(self.host1.get())
+    self.hosts.append(self.host2.get())
+    self.hosts.append(self.host3.get())
+
+    #print 'hosts',self.hosts
 
     f1 = Flooder(ip, 3000) #it is better to concentrate flooding on one port
     flooders.append(f1)
