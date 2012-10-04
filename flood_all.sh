@@ -11,6 +11,6 @@ NODES=$(($NODES - 2))
 for i in `seq $NODES`
 do
   scp flooder.py rai@$1:~/
-  ssh -t rai@$1 'python flooder.py '$VICTIM' '$VICTIMPORT
+  ssh -t rai@$1 'nohup python flooder.py &'$VICTIM' '$VICTIMPORT
   shift
 done
